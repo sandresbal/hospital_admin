@@ -31,7 +31,6 @@ class DepartmentController extends Controller
       {
         if (Auth::check())
           {       
-
             $directorData['data'] = User::all();
             return view('editdepartment', compact('department', 'directorData'));
           }           
@@ -43,10 +42,21 @@ class DepartmentController extends Controller
       public function update(Request $request, Department $department)
       {
               $department->name = $request->name;
+              $assignations = $request->get('personal');
               $department->director_id = $request->director;
               $director = DB::table('users')->where('id', $request->director)->first();
               $director->department = $department->id;
-              $department->save();
+              /*foreach($assignations as $assignation){
+                Log::info($assignation);
+                $doctor = DB::table('users')->where('id', $assignation)->first();
+                //$doctor->updateDepartment($department->id);
+
+                Log::info("id doctor antes" . $doctor->id);
+                $doctor->department = $department->id;
+                Log::info('iddoctordepartment:' . $doctor->department);
+                Log::info('iddeptartamento:' . $department->id);
+              }*/
+          $department->save();
           return redirect('/'); 
         }    	
 }  	

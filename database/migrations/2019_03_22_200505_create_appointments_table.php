@@ -16,8 +16,8 @@ class CreateAppointmentsTable extends Migration
         Schema::create('appointments', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('id_med');
-            $table->unsignedBigInteger('id_pat');
             $table->longText('data');	
             $table->dateTime('date');            
             $table->timestamps();

@@ -97,9 +97,10 @@ class UserController extends Controller
     {
     	if (Auth::check())
         {       
-                $assignations = $user->getAssignations();
+                $assignations = $user->getAssignationsDoctor();
                 $departmentData['data'] = DepartmentController::getAllDepartments();
-                return view('editpatient', compact('user', 'assignations', 'departmentData'));
+                $users =User::all ();
+                return view('editpatient', compact('user', 'assignations', 'departmentData', 'users'));
         }           
         else {
              return redirect('/');
@@ -135,6 +136,20 @@ class UserController extends Controller
             $user->save();
 	    	return redirect('/'); 
     	}    	
+    }
+
+    public function updatedepartment(Request $request, int $department){
+        $doctors = $request->get('personal');
+        foreach($doctors as $doctor){
+            Log::info($doctor);
+            $doc = DB::table('users')->where('id', $doctor)->update(['department' => $department]);
+            /*Log::info("id doctor antes" . $doc->id);
+            Log::info('iddoctordepartment:' . $doc->department);
+            Log::info('iddeptartamento:' . $department);*/
+            //$doc->save();
+          }
+          return redirect('/'); 
+
     }
 
 

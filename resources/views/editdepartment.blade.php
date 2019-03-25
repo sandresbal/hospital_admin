@@ -5,7 +5,7 @@
     <h1>Edit the Department</h1>
 
     <form method="POST" action="/department/{{ $department->id }}">
-    
+
         <table class="table">
             <div class="form-group">
                 <tr>
@@ -15,29 +15,27 @@
                     </td>
                 </tr>
                 <tr>
-                <td>
-                    <label for="director">Edit director</label>
-                    <!--<input name="director" class="form-control" value="{{$department->getDirectorName()}}">-->
-
-                             <!-- Director Dropdown -->
-                    Select director: <select id='director' name='director'>
-                    <option value='{{ $department->getDirectorId()}}'>Current: {{$department->getDirectorName()}}</option>
-                        @foreach($directorData['data'] as $user)
+                    <td>
+                        <label for="director">Edit director</label>
+                        Select director: <select id='director' name='director'>
+                            <option value='{{ $department->getDirectorId()}}'>Current:
+                                {{$department->getDirectorName()}}</option>
+                            @foreach($directorData['data'] as $user)
                             @foreach($user->getRoles() as $rol)
-                                @if ($rol->rol == 'doctor' and $user->id != $department->getDirectorId())
+                            @if ($rol->rol == 'doctor' and $user->id != $department->getDirectorId())
                             <option value='{{ $user->id }}'>{{$user->name}}</option>
                             @endif
                             @endforeach
-                        @endforeach
-                </td>
+                            @endforeach
+                    </td>
                 </tr>
                 <tr>
-                Current personal: 
-                @foreach{}
-                <input type="text" value="İstanbul, Adıyaman, Adana, Urfa" data-role="tagsinput" class="form-control" />
+                    <td>
+
+                    </td>
+                    <td>
                 </tr>
             </div>
-
         </table>
         <div class="form-group">
             <button type="submit" name="update" class="btn btn-primary">Update department</button>
@@ -45,6 +43,28 @@
         {{ csrf_field() }}
     </form>
 
+    <form method="POST" action="/user/department/{{$department->id}}" >
+        <div class="form-group" id="personal">
+            Current personal:
+            @foreach ($directorData['data'] as $user)
+            @foreach ($user->getRoles() as $rol)
+            @if($rol->rol == 'doctor')
+            <input type="checkbox" value="{{$user->id}}" name="personal[]" @if($user->department ==
+            $department->id) checked @endif/>
+            <label for="{{$user->id}}">{{$user->name}}</label>
+            @endif
+            @endforeach
+            @endforeach
+        </div>
+        <div class="form-group">
+        <button type="submit" name="edit" class="btn btn-primary">Edit personal</button>
+        </div>
+        {{ csrf_field() }}
+
+    </form>
+
 </div>
+
+
 
 @stop

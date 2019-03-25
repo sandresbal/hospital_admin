@@ -14,7 +14,7 @@ class Constraints extends Migration
     public function up()
     {
         Schema::table('historials', function($table) {
-        $table->foreign('id_user')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
+        $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
         });
         Schema::table('departments', function($table) {
             $table->foreign('director_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
@@ -25,11 +25,11 @@ class Constraints extends Migration
         });
         Schema::table('appointments', function($table) {
             $table->foreign('id_med')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('id_pat')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
         });
         Schema::table('asignation_departments', function($table) {
             $table->foreign('id_department')->references('id')->on('departments')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('id_user')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
         });
         Schema::table('asignation_roles', function($table) {
             $table->foreign('id_user')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');

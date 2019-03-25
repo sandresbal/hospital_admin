@@ -31,6 +31,9 @@ Route::post('/user','UserController@create');
 Route::get('/user/{user}','UserController@edit');
 Route::post('/user/{user}','UserController@update');
 
+Route::post('user/department/{dep}', [
+    'as' => 'reasigndep', 'uses' => 'UserController@updatedepartment']);
+
 /** */
 
 Route::get('/departmentadmin', 'DepartmentController@index');
@@ -90,7 +93,6 @@ Route::post('patientassignationedit/{user}/delete/{doctor}', [
     'as' => 'deleter', 'uses' => 'UserController@deleteassignation']);
 
 Route::post('/patientassignationedit/{user}','UserController@deleteassignation');
-
 
 Route::post ('/addDoctor', 'UserController@doctorfiltered' );
 

@@ -42,7 +42,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function department()
+    public function departments()
     {
         return $this->hasOne('App\Department');
     }
@@ -66,11 +66,7 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Role', 'asignation_roles', 'id_user', 'id_rol');
     }
 
-    /*public function assignations() {
-        return $this->belongsToMany('App\PatientAssignation', 'asignation_patients', 'id_user_pat', 'id_user_med');
-    }*/
-
-    public function getAssignations() {
+    public function getAssignationsDoctor() {
 
         $assignations = [];
         if ($this->doctors()) {
@@ -87,6 +83,7 @@ class User extends Authenticatable
         return $doctors;
 
     }
+
 
     public function attachRole($role) {
         if (is_object($role)) {
@@ -127,54 +124,15 @@ class User extends Authenticatable
             $roles = $this->roles()->get();
         }
 
-        Log::info('Roles en modelo:' . $roles);
-
         return $roles;
 
     }
 
-    /*public static function get    public function update(Request $request, User $user)
-    {
-    	if(isset($_POST['delete'])) {
-    		$user->delete();
-    		return redirect('/');
-    	}
-    	else
-    	{
-            $user->name = $request->name;
-            $user->email = $request->email;
-            $user->phone = $request->phone;
-            $roles = $request->get('role');
-                
-            if (isset($roles)){
-                foreach ($roles as $role){
-                    $user->attachRole($role);
-                }
-                }
-            $user->save();
-	    	return redirect('/'); 
-    	}    	
-    }Doctors() {
+    public function updateDepartment($iddep){
+        $this->department = $department;
+        $this->save();
 
-        $roles = [];
-        $doctors=[];
-        $users = User::all();
-
-        foreach($users as $user){
-            $roles = $user->getRoles();
-            foreach($roles as $rol){
-                Log::info('imprimimos rol detectado' . print_r($rol->name));
-                if ($rol == 'doctor'){
-                    Log::info('imprimimos rol de médico detectado' . print_r($rol->name));
-                    array_push($doctors, $user);
-                }
-            }
-        }
-
-        return $doctors;
-
-    }*/
-
+    }
 
 
 }
