@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
                 @if (Auth::check())
-                        <a href="/user" class="btn btn-primary">Add new Department</a>
+                        <a href="/department" class="btn btn-primary">Add new Department</a>
                         <table class="table">
                         <thead>
                             <tr>

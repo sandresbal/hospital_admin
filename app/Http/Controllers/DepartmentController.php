@@ -22,6 +22,22 @@ class DepartmentController extends Controller
         return view('departmentadmin',compact( 'departments'));
       }
 
+      public function add()
+      {
+        $directors['data'] = User::all();
+        return view('adddepartment', compact('directors'));
+      }
+  
+      public function create(Request $request)
+      {
+        $department = new Department();
+          $department->name = $request->name;
+          $department->director_id = $request->director;  
+          $department->save();
+  
+        return redirect('/'); 
+      }
+
       public static function getAllDepartments(){
         $value = Department::all();
         return $value;
