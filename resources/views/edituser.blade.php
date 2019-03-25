@@ -5,40 +5,24 @@
     <h1>Edit the User</h1>
 
     <form method="POST" action="/user/{{ $user->id }}">
+    
         <table class="table">
             <div class="form-group">
                 <tr>
                     <td>
-                        Current data
-                    </td>
-                    <td>
-                        New data
-                    </td>
-                <tr>
-                <tr>
-                    <td>
-                        User name:{{$user->name}}
-                    </td>
-                    <td>
-                        <label for="name">New name </label>
-                        <input name="name" class="form-control" placeholder="Your name here" required="true">
+                        <label for="name">Edit name </label>
+                        <input name="name" class="form-control" value="{{$user->name}}">
                     </td>
                 </tr>
                 <td>
-                    User email:{{$user->email}}
-                </td>
-                <td>
-                    <label for="name">Email</label>
-                    <input name="email" class="form-control" placeholder="example@gmail.com" required="true">
+                    <label for="name">Edit email</label>
+                    <input name="email" class="form-control" value="{{$user->email}}">
                 </td>
                 <tr>
                     <td>
-                        User phone: {{$user->phone}}
-                    </td>
-                    <td>
-                        <label for="name">Phone</label>
-                        <input type="phone" name="phone" class="form-control" placeholder="+34636207221"
-                            required="true">
+                        <label for="name">Edit phone</label>
+                        <input type="phone" name="phone" class="form-control" value="{{$user->phone}}"
+                            >
                     </td>
                 </tr>
                 <tr>
@@ -49,7 +33,7 @@
                         @endforeach
                     </td>
                     <td>
-                        Select role:<br>
+                        Select new role:<br>
                         <input type="checkbox" name="role[]" value="1">Admin<br>
                         <input type="checkbox" name="role[]" value="2">Doctor<br>
                         <input type="checkbox" name="role[]" value="3">Patient<br>

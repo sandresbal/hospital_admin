@@ -18,6 +18,7 @@ class CreateDepartmentsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->unsignedBigInteger('director_id');
+            $table->timestamps();
         });
 
     }

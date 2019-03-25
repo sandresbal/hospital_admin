@@ -48,8 +48,10 @@ class UserController extends Controller
 
         $user->save();
         
+        if (isset($roles)){
         foreach ($roles as $role){
             $user->attachRole($role);
+        }
         }
 
         $user->save();
@@ -80,11 +82,12 @@ class UserController extends Controller
             $user->email = $request->email;
             $user->phone = $request->phone;
             $roles = $request->get('role');
-            Log::info('Roles del controlador que nos traemos:' . print_r($roles));
                 
-            foreach ($roles as $role){
-                $user->attachRole($role);
-            }
+            if (isset($roles)){
+                foreach ($roles as $role){
+                    $user->attachRole($role);
+                }
+                }
             $user->save();
 	    	return redirect('/'); 
     	}    	
@@ -95,7 +98,6 @@ class UserController extends Controller
     	if (Auth::check())
         {       
                 $assignations = $user->getAssignations();
-                //$department = Department::all('name', 'id');
                 $departmentData['data'] = DepartmentController::getAllDepartments();
                 return view('editpatient', compact('user', 'assignations', 'departmentData'));
         }           
@@ -134,6 +136,12 @@ class UserController extends Controller
 	    	return redirect('/'); 
     	}    	
     }
+
+
+
+    //***    @TODO https://medium.com/justlaravel/how-to-implement-ajax-crud-operations-in-laravel-761fbea7e80d
+ 
+
     public function addDoctor(Request $request) {
         $rules = array (
                 'name' => 'required'

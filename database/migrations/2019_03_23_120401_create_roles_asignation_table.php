@@ -18,6 +18,7 @@ class CreateRolesAsignationTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('id_user');
             $table->unsignedBigInteger('id_rol');
+            $table->timestamps();
         });
     }
 

@@ -17,6 +17,7 @@ class CreateAsignationDepartmentsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('id_department');
             $table->unsignedBigInteger('id_user');
+            $table->timestamps();
         });
 
     }

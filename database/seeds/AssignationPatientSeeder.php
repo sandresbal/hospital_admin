@@ -17,6 +17,8 @@ class AssignationPatientSeeder extends Seeder
             DB::table('patient_assignations')->insert(array(
            'id_user_med' => random_int(1,50),
            'user_id' => random_int(1,50),
+           'created_at' => $faker->dateTimeBetween($startDate = '-5 years', $endDate = 'now'),
+           'updated_at' => $faker->dateTimeBetween($startDate = '-5 years', $endDate = 'now'),
     ));
     }
 }

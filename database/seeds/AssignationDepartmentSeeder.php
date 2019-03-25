@@ -18,6 +18,8 @@ class AssignationDepartmentSeeder extends Seeder
             DB::table('asignation_departments')->insert(array(
            'id_department' => random_int(1,50),
            'id_user' => random_int(1,50),
+           'created_at' => $faker->dateTimeBetween($startDate = '-5 years', $endDate = 'now'),
+           'updated_at' => $faker->dateTimeBetween($startDate = '-5 years', $endDate = 'now'),
     ));
     }
     }

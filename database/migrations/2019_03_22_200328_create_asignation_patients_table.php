@@ -18,6 +18,7 @@ class CreateAsignationPatientsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('id_user_med');
+            $table->timestamps();
         });
 
         

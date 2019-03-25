@@ -87,7 +87,7 @@ Route::get('/patientassignationedit/{user}','UserController@editassignation');
 
 //Route::post('/patientassignationedit/{user}','PatientController@delete');
 Route::post('patientassignationedit/{user}/delete/{doctor}', [
-    'as' => 'deleter', 'uses' => 'PatientController@delete']);
+    'as' => 'deleter', 'uses' => 'UserController@deleteassignation']);
 
 Route::post('/patientassignationedit/{user}','UserController@deleteassignation');
 
