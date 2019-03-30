@@ -35,6 +35,7 @@ Route::post('user/department/{dep}', [
     'as' => 'reasigndep', 'uses' => 'UserController@updatedepartment']);
 
 Route::get('/user/{user}/historial','UserController@editHistorial');
+Route::get('/myhistorial','UserController@seeMyHistorial');
 
 
 /** */

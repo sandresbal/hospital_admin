@@ -40,8 +40,8 @@
                             @case('patient')
                                 <div id="separator" style="margin-bottom:15px">
                                 <p>As an admin user you have this options available:</p>
-                                <a href="/historialadmin">See my historial</a><br>
-                                <a href="/appointmentadmin">See my appointments</a>  <br>
+                                <a href="/myhistorial">See my historial</a><br>
+                                <a href="/myappointments">See my appointments</a>  <br>
                                 </div>
                             @break
                         @endswitch

@@ -191,4 +191,15 @@ class UserController extends Controller
         return view('edithistorial', compact('user','id_historial', 'lines', 'admin'));
     }
 
+    public function seeMyHistorial(){
+        $user = Auth::user();
+        $id_historial =  $user->historial;
+        $historial = DB::table('historial')->where('id', $id_historial);
+        $lines =  DB::table('lines')->where('id_historial', $id_historial)->get();
+        foreach($lines as $line){
+            Log::info('hay linea' .$line->id);
+        }
+        return view('myhistorial', compact('user','id_historial', 'lines', 'admin'));
+    }
+
 }

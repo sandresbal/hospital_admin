@@ -33,38 +33,52 @@
 
     <h4>Or asign a new doctor from a medical specialization</h4>
 
-         <!-- Department Dropdown -->
-            Department : <select id='sel_depart' name='sel_depart'>
-                <option value='0'>-- Select department --</option>
-                @foreach($departmentData['data'] as $department)
-                <option value='{{ $department->id }}'>{{$department->name}}</option>
-                @endforeach
-            
-                
-    </div>
+    <!-- Department Dropdown -->
+    Department :
+    <select id='sel_depart' name='sel_depart'>
+        <option value='0'>-- Select department --</option>
+        @foreach($departmentData['data'] as $department)
+        <option value='{{ $department->id }}'>{{$department->name}}</option>
+        @endforeach
+    </select>
+
+
+</div>
 </div>
 <script type="text/javascript">
-$("#sel_depart").change(function() {
-$.ajax({
-        type: 'post',
-        url: '/addDoctor',
-        data: {
-            '_token': $('input[name=_token]').val(),
-            'name': $('input[name=name]').val()
-        },
-        success: function(data) {
-            if ((data.errors)) {
-                $('.error').removeClass('hidden');
-                $('.error').text(data.errors.name);
-            } else {
-                $('.error').remove();
-                $('#table').append("<tr class='item" + data.id + "'><td>" + data.id + "</td><td>" + data.name + "</td><td><button class='edit-modal btn btn-info' data-id='" + data.id + "' data-name='" + data.name + "'><span class='glyphicon glyphicon-edit'></span> Edit</button> <button class='delete-modal btn btn-danger' data-id='" + data.id + "' data-name='" + data.name + "'><span class='glyphicon glyphicon-trash'></span> Delete</button></td></tr>");
+    $(document).ready(function () {
+                $("sel_depart").change(function () {
+                    $.ajax({
+                        type: 'post',
+                        url: '/addDoctor',
+                        data: {
+                            '_token': $('input[name=_token]').val(),
+                            'name': $('input[name=name]').val()
+                        },
+                        success: function (data) {
+                            if ((data.errors)) {
+                                $('.error').removeClass('hidden');
+                                $('.error').text(data.errors.name);
+                            } else {
+                                $('.error').remove();
+                                $('#table').append("<tr class='item" + data.id + "'><td>" + data
+                                    .id + "</td><td>" + data.name +
+                                    "</td><td><button class='edit-modal btn btn-info' data-id='" +
+                                    data.id + "' data-name='" + data.name +
+                                    "'><span class='glyphicon glyphicon-edit'></span> Edit</button> <button class='delete-modal btn btn-danger' data-id='" +
+                                    data.id + "' data-name='" + data.name +
+                                    "'><span class='glyphicon glyphicon-trash'></span> Delete</button></td></tr>"
+                                    );
+                            }
+                        },
+                    });
+                    $('#sel_depart').val('');
+                });
+
             }
-        },
-    });
-    $('#sel_depart').val('');
-});
-</script>    
+    )
+
+</script>
 
 </div>
 

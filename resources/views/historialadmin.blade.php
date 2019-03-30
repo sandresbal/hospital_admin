@@ -26,8 +26,7 @@
                                 </td>
                                 <td>
                                     <form action="/user/{{$user->id}}/historial/">
-                                        <button type="submit" name="edit" class="btn btn-primary">Edit historial</button>
-                                        
+                                        <button type="submit" name="edit" class="btn btn-primary">Edit historial</button>          
                                         {{ csrf_field() }}
                                     </form>
                                 </td>

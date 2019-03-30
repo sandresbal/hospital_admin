@@ -17,7 +17,7 @@ class HistorialController extends Controller
         foreach($allusers as $u){
             $roles = $u->getRoles();
             foreach ($roles as $rol){
-                if ($rol = 'patient'){
+                if ($rol->rol == 'patient'){
                     array_push($patients, $u);
                 }
             }

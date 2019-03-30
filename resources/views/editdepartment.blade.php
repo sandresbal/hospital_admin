@@ -60,7 +60,7 @@
         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
             <form method="POST" action="/user/department/{{$department->id}}">
                 <div class="form-group" id="personal" style ="padding-top:50px">
-                    Current personal:
+                    Check other users for adding them at the department:
                     @foreach ($directorData['data'] as $user)
                     @foreach ($user->getRoles() as $rol)
                     @if($rol->rol == 'doctor')
