@@ -22,6 +22,7 @@ class UserSeeder extends Seeder
            'password' => bcrypt('test@123'),
            'phone' => $faker->e164PhoneNumber(),
            'department' => random_int(1,2),
+           'historial' => random_int(1,10),
            'remember_token' => str_random(10),
            'created_at' => date('Y-m-d H:m:s'),
            'updated_at' => date('Y-m-d H:m:s')

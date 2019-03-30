@@ -3,31 +3,31 @@
 @section('content')
 <div class="container">
                 @if (Auth::check())
-                        <a href="/department" class="btn btn-primary">Add new Department</a>
                         <table class="table">
-                        <thead>
-                            <tr>
+                            <thead><tr>
                             <td>
-                            Department name
+                            User list
                             </td>
                             <td>
-                            Director name
+                            Email
+                            </td>
+                            <td>
+                            Options
                             </td>
                             </tr>
                         </thead>
-                        <tbody>@foreach($departments as $department)
+                        <tbody>@foreach($patients as $patient)
                             <tr>
                                 <td>
-                                    {{$department->name}}
+                                    {{$patient->name}}
                                 </td>
                                 <td>
-                                    Dr. {{$department->getDirectorName()}}
+                                    {{$patient->email}}
                                 </td>
                                 <td>
-                                    <form action="/department/{{$department->id}}">
-                                        <button type="submit" name="edit" class="btn btn-primary">Edit</button>
-
-                                        <button type="submit" name="delete" formmethod="POST" class="btn btn-danger">Delete</button>               
+                                    <form action="/user/{{$user->id}}/historial/">
+                                        <button type="submit" name="edit" class="btn btn-primary">Edit historial</button>
+                                        
                                         {{ csrf_field() }}
                                     </form>
                                 </td>

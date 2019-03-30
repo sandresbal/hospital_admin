@@ -134,5 +134,8 @@ class User extends Authenticatable
 
     }
 
+    public function getHistorial(){
+        return $this->historial;
+    }
 
 }

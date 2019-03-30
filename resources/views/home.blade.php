@@ -23,23 +23,31 @@
                         @foreach(Session::get('roles_logged') as $role)
                         @switch($role->rol)
                             @case('admin')
+                                <div id="separator" style="margin-bottom:15px">
                                 <p>As an admin user you have this options available:</p>
                                 <a href="/useradmin">Manage users</a><br>
                                 <a href="/departmentadmin">Manage department information</a><br>  
-                                <a href="/patientadmin">Manage patient assignations</a><br>  
+                                <a href="/patientadmin">Manage patient assignations</a><br> 
+                                </div> 
                             @break
                             @case('doctor')
+                                <div id="separator" style="margin-bottom:15px">
                                 <p>As an admin user you have this options available:</p>
-                                <a href="/departmentadmin">Manage department info</a>
-                                <a href="/historialadmin">Manage historials</a>   <br>        <a href="/appointmentadmin">Manage appointments</a>  <br>
+                                <a href="/historialadmin">Manage historials</a>   <br>        
+                                <a href="/appointmentadmin">Manage appointments</a>  <br>
+                                </div>
                             @break
                             @case('patient')
+                                <div id="separator" style="margin-bottom:15px">
                                 <p>As an admin user you have this options available:</p>
                                 <a href="/historialadmin">See my historial</a><br>
                                 <a href="/appointmentadmin">See my appointments</a>  <br>
+                                </div>
                             @break
                         @endswitch
                         @endforeach
+                    @else
+                        <p>You do not have any role assigned. Please contact with admin@admin.com</p>
                     @endif
                 </div>
             @else

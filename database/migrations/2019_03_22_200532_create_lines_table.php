@@ -17,7 +17,6 @@ class CreateLinesTable extends Migration
             $table->engine = 'InnoDB';
             $table->bigIncrements('id');
             $table->unsignedBigInteger('id_historial');
-            $table->unsignedBigInteger('id_appointment');
             $table->longText('data');	
             $table->timestamps();
         });

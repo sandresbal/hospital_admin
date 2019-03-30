@@ -34,6 +34,9 @@ Route::post('/user/{user}','UserController@update');
 Route::post('user/department/{dep}', [
     'as' => 'reasigndep', 'uses' => 'UserController@updatedepartment']);
 
+Route::get('/user/{user}/historial','UserController@editHistorial');
+
+
 /** */
 
 Route::get('/departmentadmin', 'DepartmentController@index');
@@ -77,7 +80,7 @@ Route::get('/lineadmin', 'LineController@index');
 Auth::routes();
 
 Route::get('/line','LineController@add');
-Route::post('/line','LineController@create');
+Route::post('/line/historial/{historial}','LineController@create');
 
 Route::get('/line/{appointment}','LineController@edit');
 Route::post('/line/{appointment}','LineController@update');

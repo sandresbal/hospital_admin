@@ -9,6 +9,8 @@ use App\User;
 use App\Role;
 use App\PatientAssignation;
 use App\Department;
+use App\Historial;
+use App\Line;
 use Form;
 
 
@@ -174,19 +176,19 @@ class UserController extends Controller
                 return response ()->json ( $data );
             }
     }
-    /*public function deleteassignation(Request $request, User $user)
-    {
 
-        $assignations = [];
-        if ($this->doctors()) {
-            $assignations = $this->doctors()->get();
+    public function editHistorial(Request $request, User $user){
+        
+        $admin = Auth::user();
+        Log::info('ID user ' .$user->id);
+        $id_historial =  $user->historial;
+        Log::info('ID historial ' .$id_historial);
+        $historial = DB::table('historial')->where('id', $id_historial);
+        $lines =  DB::table('lines')->where('id_historial', $id_historial)->get();
+        foreach($lines as $line){
+            Log::info('hay linea' .$line->id);
         }
+        return view('edithistorial', compact('user','id_historial', 'lines', 'admin'));
+    }
 
-        $doctors = [];
-        foreach($assignations as $iddoctor){
-            $doctor = DB::table('users')->where('id', $iddoctor->id_user_med)->first();
-            $doctorname = $doctor->name;
-            array_push($doctors, $doctorname);
-        }    	
-    }*/
 }

@@ -17,7 +17,6 @@ class LineSeeder extends Seeder
         for ($i=0; $i < 10; $i++) {
             DB::table('lines')->insert(array(
             'id_historial' => random_int(1,50),
-            'id_appointment' => random_int(1,50),
             'data'=> $faker->text($maxNbChars = 200),
            'created_at' => $faker->dateTimeBetween($startDate = '-5 years', $endDate = 'now'),
            'updated_at' => $faker->dateTimeBetween($startDate = '-5 years', $endDate = 'now'),

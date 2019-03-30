@@ -15,4 +15,5 @@ class Historial extends Model
     {
         return $this->hasMany('App\Line');
     }
+
 }

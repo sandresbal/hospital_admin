@@ -16,7 +16,6 @@ class HistorialSeeder extends Seeder
         $faker = Faker::create();
         for ($i=0; $i < 10; $i++) {
             DB::table('historials')->insert(array(
-            'user_id' => random_int(1,50),
            'created_at' => $faker->dateTimeBetween($startDate = '-5 years', $endDate = 'now'),
            'updated_at' => $faker->dateTimeBetween($startDate = '-5 years', $endDate = 'now'),
 

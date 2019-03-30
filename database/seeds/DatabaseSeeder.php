@@ -24,7 +24,6 @@ class DatabaseSeeder extends Seeder
         $this->call(HistorialSeeder::class);
         $this->call(DepartmentSeeder::class);
         $this->call(LineSeeder::class);
-        $this->call(AssignationDepartmentSeeder::class);
         $this->call(AssignationPatientSeeder::class);
         $this->call(AssignationRolSeeder::class);
 

@@ -57,6 +57,12 @@ class DepartmentController extends Controller
 
       public function update(Request $request, Department $department)
       {
+        if(isset($_POST['delete'])) {
+          $department->delete();
+          return redirect('/');
+        }
+        else
+        {
               $department->name = $request->name;
               $assignations = $request->get('personal');
               $department->director_id = $request->director;
@@ -75,6 +81,7 @@ class DepartmentController extends Controller
           $department->save();
           return redirect('/'); 
         }    	
+      } 
 }  	
       
 
