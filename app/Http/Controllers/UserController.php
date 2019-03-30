@@ -118,6 +118,14 @@ class UserController extends Controller
         return redirect('/');
     }
 
+    public function addassignation(Request $request, int $pat, int $med){
+        $assignation = new Assignation();
+        $assignation->user_id = $pat;
+        $assignation->id_user_med = $med;
+        $assignation->save();
+        return redirect('/');
+    }
+
     public function updatepatient(Request $request, User $user)
     {
     	if(isset($_POST['delete'])) {
@@ -153,10 +161,6 @@ class UserController extends Controller
           return redirect('/'); 
 
     }
-
-
-
-    //***    @TODO https://medium.com/justlaravel/how-to-implement-ajax-crud-operations-in-laravel-761fbea7e80d
  
 
     public function addDoctor(Request $request) {
@@ -176,6 +180,13 @@ class UserController extends Controller
                 return response ()->json ( $data );
             }
     }
+
+    public function getPersonal(Request $request, int $department){
+        $personalData['data'] =  DB::table('users')->where('department', $department)->get();
+        echo json_encode($personalData);
+        exit;
+    }
+
 
     public function editHistorial(Request $request, User $user){
         

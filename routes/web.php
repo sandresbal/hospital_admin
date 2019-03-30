@@ -95,10 +95,12 @@ Route::get('/patientassignationedit/{user}','UserController@editassignation');
 //Route::post('/patientassignationedit/{user}','PatientController@delete');
 Route::post('patientassignationedit/{user}/delete/{doctor}', [
     'as' => 'deleter', 'uses' => 'UserController@deleteassignation']);
+Route::post('patientassignationedit/{user}/add/{doctor}', [
+    'as' => 'adder', 'uses' => 'UserController@addassignation']);
 
 Route::post('/patientassignationedit/{user}','UserController@deleteassignation');
 
-Route::post ('/addDoctor', 'UserController@doctorfiltered' );
+Route::get('patientassignationedit/getPersonal/{department}', 'UserController@getPersonal' );
 
 
 /*Route::get('/patientadmin', 'PatientController@index');
