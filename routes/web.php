@@ -65,8 +65,8 @@ Route::post('/historial/{historial}','HistorialController@update');
 /** */
 
 Route::get('/appointmentadmin', 'AppointmentController@index');
-
-Auth::routes();
+Route::get('/myappointments', 'AppointmentController@indexpatient');
+Route::get('/editappointment', 'AppointmentController@editappointment');
 
 Route::get('/appointment','AppointmentController@add');
 Route::post('/appointment','AppointmentController@create');

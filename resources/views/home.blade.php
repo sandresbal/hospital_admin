@@ -32,22 +32,26 @@
                             @break
                             @case('doctor')
                                 <div id="separator" style="margin-bottom:15px">
-                                <p>As an admin user you have this options available:</p>
+                                <p>As doctor you have this options available:</p>
                                 <a href="/historialadmin">Manage historials</a>   <br>        
-                                <a href="/appointmentadmin/">See my appointments</a>  <br>
+                                <a href="/appointmentadmin/">See my calendar</a>  <br>
+                                <a href="/editappointment/">Edit my appointments</a>  <br>
                                 </div>
                             @break
                             @case('patient')
                                 <div id="separator" style="margin-bottom:15px">
-                                <p>As an admin user you have this options available:</p>
+                                <p>As a patient you have this options available:</p>
                                 <a href="/myhistorial">See my historial</a><br>
-                                <a href="/myappointments">See my appointments</a>  <br>
+                                <a href="/myappointments/">See my appointments</a>  <br>
                                 </div>
                             @break
+                           @default
+                           <div id="separator" style="margin-bottom:15px">
+                           <p>If you do not see any option, please contact with admin@admin.com</p><br>
+                                </div>
                         @endswitch
                         @endforeach
                     @else
-                        <p>You do not have any role assigned. Please contact with admin@admin.com</p>
                     @endif
                 </div>
             @else

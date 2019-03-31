@@ -152,10 +152,6 @@ class UserController extends Controller
         foreach($doctors as $doctor){
             Log::info($doctor);
             $doc = DB::table('users')->where('id', $doctor)->update(['department' => $department]);
-            /*Log::info("id doctor antes" . $doc->id);
-            Log::info('iddoctordepartment:' . $doc->department);
-            Log::info('iddeptartamento:' . $department);*/
-            //$doc->save();
           }
           return redirect('/'); 
 
@@ -163,10 +159,6 @@ class UserController extends Controller
 
     public function getPersonal(Request $request, int $department){
         $personalData['data'] =  DB::table('users')->where('department', $department)->get();
-        //echo json_encode($personalData);
-        //exit;
-        //$return_array = compact('personalData', 'user');
-        //return json_encode($return_array);
         return json_encode($personalData);
     }
 
