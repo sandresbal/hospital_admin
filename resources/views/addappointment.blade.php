@@ -15,7 +15,11 @@
                         <label for="patient">Select patient: </label>
                         <select id='patient' name='patient'>
                             @foreach($users as $user)
+                            @foreach($user->getRoles() as $rol)
+                            @if ($rol->rol == 'patient')
                             <option value='{{ $user->id }}'>{{$user->name}}</option>
+                            @endif
+                            @endforeach
                             @endforeach
                     </td>
                 </tr>

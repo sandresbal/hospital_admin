@@ -107,9 +107,6 @@ class AppointmentController extends Controller
             $appointment->id_med = $user->id;
             $appointment->date_start = $request->date_start;
             $appointment->date_end = $request->date_end;
-            $assignations = DB::table('asignation_roles')->where('id_user', $request->patient)->get();
-
-            //TODO: RECORRER LAS ASIGNACIONES Y SI NINGUNA ES PACIENTE, AÑADIRLA
             $appointment->save();
 	    	return redirect('/'); 
     	}    	
