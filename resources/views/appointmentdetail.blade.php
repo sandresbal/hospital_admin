@@ -21,8 +21,7 @@
                 <tr>
                     <td>
                         <label for="name">Date end</label>
-                        <input type="datetime-local" name="date_end" class="form-control" value="{{$appointment->date_end}}"
-                            >
+                        <input type="datetime-local" name="date_end" class="form-control" value="{{$appointment->date_end}}">
                     </td>
                 </tr>
             </div>

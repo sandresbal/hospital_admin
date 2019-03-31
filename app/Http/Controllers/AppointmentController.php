@@ -107,9 +107,39 @@ class AppointmentController extends Controller
             $appointment->id_med = $user->id;
             $appointment->date_start = $request->date_start;
             $appointment->date_end = $request->date_end;
+            $assignations = DB::table('asignation_roles')->where('id_user', $request->patient)->get();
+
+            //TODO: RECORRER LAS ASIGNACIONES Y SI NINGUNA ES PACIENTE, AÑADIRLA
             $appointment->save();
 	    	return redirect('/'); 
     	}    	
+    }
+
+    public function add()
+    {
+        /*$patientData['data']=(array) User::all()->toArray();*/
+        //$users['data'] =  DB::table('users');
+        $users = User::all();
+
+    	return view('addappointment', compact('users'));
+    }
+
+    /*public function add()
+    {
+    	return view('addappointment');
+    }*/
+
+    public function create(Request $request)
+    {   $user = Auth::user();
+    	$appointment = new Appointment();
+        $appointment->user_id = $request->patient;
+        $appointment->id_med = $user->id;
+        $appointment->date_start = $request->date_start;
+        $appointment->date_end = $request->date_end;
+
+        $appointment->save();
+
+    	return redirect('/'); 
     }
 
 }
