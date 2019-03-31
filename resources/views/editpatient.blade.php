@@ -2,17 +2,12 @@
 
 @section('content')
 <div class="container">
-    <h3>Delete one of the doctor assigned</h3>
+    <h3>Delete one of the doctors assigned</h3>
     <table class="table">
         <div class="form-group">
             <tr>
                 <td>
-                    User name: {{$user->name}}
-                <td>
-            </tr>
-            <tr>
-                <td>
-                    Doctors: 
+                    Doctors assigned for {{$user->name}};
                 </td>
             </tr>
             @foreach($assignations as $doctor)
@@ -20,9 +15,11 @@
                 Dr. {{$doctor->name}}
             </td>
             <td>
+                Dr. {{$doctor->name}}
+            </td>
+            <td>
                 <form action="/patientassignationedit/{{$user->id}}/delete/{{$doctor->id}}" method="post">
                     <button type="submit" class="btn btn-danger" value="{{ csrf_token() }}">Delete</button>
-                    {{ csrf_field() }}
             </td>
             </tr>
             @endforeach
@@ -44,7 +41,7 @@
         <option value='{{ $department->id }}'>{{$department->name}}</option>
         @endforeach
     </select>
-    <input type="submit" id="list-personal">
+    <input type="submit" id="list-personal" value="Search">
     </div>
 
     <table id='table-personal' class="table">
@@ -66,11 +63,14 @@
         $('#list-personal').click(function () {
             id = $('#sel_depart').val();
             console.log(id)
+            var user_id = {!!$user->id!!} ;
+            console.log("user:" + user_id)
             getPersonalFromDep(id);
         });
 
         function getPersonalFromDep(id) {
             $.ajax({
+                _token: '{{ csrf_field() }}',
                 url: 'getPersonal/' + id,
                 type: 'get',
                 dataType: 'json',
@@ -82,33 +82,35 @@
                     $('#table-personal tbody').empty(); // Empty <tbody>
                     if (response['data'] != null) {
                         len = response['data'].length;
-                        
                     }
 
                     if (len > 0) {
                         for (var i = 0; i < len; i++) {
                             var id = response['data'][i].id;
                             var name = response['data'][i].name;
+                            var user_id = $('#id_user').html();
+                            console.log(user_id)
+
 
                             var tr_str = "<tr>" +
-                                "<td align='center'>" + (i + 1) + "</td>" +
-                                "<td align='center'>" + name + "</td>" +
-                                "<form action='/patientassignationedit/{{$user->id}}/add/" +  response['data'].id  + "method='post'><button type='submit' class='btn btn-danger'>Add</button></td>" +
-                                "</tr>";
+                                "<td>" + (i + 1) + "</td>" +
+                                "<td> Dr." + name + "</td>" +
+                                "<td>" + '<form action="/patientassignationedit/{{$user->id}}/add/' +  id  + '" method="post">@csrf<button type="submit" class="btn btn-primary">Assign doctor to {{$user->name}}</button></form></td></tr>';
 
                             $("#table-personal tbody").append(tr_str);
                         }
                     } else if (response['data'] != null) {
                         var tr_str = "<tr>" +
-                            "<td align='center'>1</td>" +
-                            "<td align='center'>" + response['data'].name + "</td>" +
-                            "<td align='center'>" + "<form action='/patientassignationedit/" +{{$user->id}} +"/add/" +  response['data'].id  + "method='post'><button type='submit' class='btn btn-danger'>Add</button></form></td>" +
+                            "<td>1</td>" +
+                            "<td>" + response['data'].name + "</td>" +
+                            "<td>" + "<form action='/patientassignationedit/{{$user->id}}/add/" +  response['data'].id  + " method='post'><button type='submit' class='btn btn-danger'>Add2</button> </form></td>" +
                             "</tr>";
+                            console.log(response['data'].id);
 
                         $("#userTable tbody").append(tr_str);
                     } else {
                         var tr_str = "<tr>" +
-                            "<td align='center' colspan='4'>No record found.</td>" +
+                            "<td  colspan='4'>No record found.</td>" +
                             "</tr>";
 
                         $("#table-personal tbody").append(tr_str);

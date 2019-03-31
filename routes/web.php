@@ -100,7 +100,7 @@ Route::post('patientassignationedit/{user}/add/{doctor}', [
 
 Route::post('/patientassignationedit/{user}','UserController@deleteassignation');
 
-Route::get('patientassignationedit/getPersonal/{department}', 'UserController@getPersonal' );
+Route::get('/patientassignationedit/getPersonal/{department}', 'UserController@getPersonal' );
 
 
 /*Route::get('/patientadmin', 'PatientController@index');

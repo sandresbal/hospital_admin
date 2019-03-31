@@ -34,7 +34,7 @@
                                 <div id="separator" style="margin-bottom:15px">
                                 <p>As an admin user you have this options available:</p>
                                 <a href="/historialadmin">Manage historials</a>   <br>        
-                                <a href="/appointmentadmin">Manage appointments</a>  <br>
+                                <a href="/appointmentadmin/">See my appointments</a>  <br>
                                 </div>
                             @break
                             @case('patient')

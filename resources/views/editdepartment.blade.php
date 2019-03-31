@@ -29,14 +29,14 @@
                         </tr>
                         <tr>
                             <td>
-                                <label for="director">Edit director</label>
-                                Select director: <select id='director' name='director'>
+                                <label for="director">Select director: </label>
+                                <select id='director' name='director'>
                                     <option value='{{ $department->getDirectorId()}}'>Current:
                                         {{$department->getDirectorName()}}</option>
                                     @foreach($directorData['data'] as $user)
                                     @foreach($user->getRoles() as $rol)
                                     @if ($rol->rol == 'doctor' and $user->id != $department->getDirectorId())
-                                    <option value='{{ $user->id }}'>{{$user->name}}</option>
+                                    <option value='{{ $user->id }}'>Dr. {{$user->name}}</option>
                                     @endif
                                     @endforeach
                                     @endforeach
@@ -60,7 +60,8 @@
         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
             <form method="POST" action="/user/department/{{$department->id}}">
                 <div class="form-group" id="personal" style ="padding-top:50px">
-                    Check other users for adding them at the department:
+                    Below you can see all the available doctors. <br>
+                    If checked, he/she belogs to this department. Please, check all the doctors you want to assign to {{$department->name}} department:<br>
                     @foreach ($directorData['data'] as $user)
                     @foreach ($user->getRoles() as $rol)
                     @if($rol->rol == 'doctor')

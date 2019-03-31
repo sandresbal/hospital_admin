@@ -18,8 +18,8 @@ class CreateAppointmentsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('id_med');
-            $table->longText('data');	
-            $table->dateTime('date');            
+            $table->dateTime('date_start');
+            $table->dateTime('date_end');                        
             $table->timestamps();
         });
 

@@ -99,16 +99,15 @@ class UserController extends Controller
     {
     	if (Auth::check())
         {       
-                $assignations = $user->getAssignationsDoctor();
-                $departmentData['data'] = DepartmentController::getAllDepartments();
-                $users =User::all ();
-                return view('editpatient', compact('user', 'assignations', 'departmentData', 'users'));
+            $assignations = $user->getAssignationsDoctor();
+            $departmentData['data'] = DepartmentController::getAllDepartments();
+            $users =User::all ();
+            return view('editpatient', compact('user', 'assignations', 'departmentData', 'users'));
         }           
         else {
              return redirect('/');
          }            	
     }
-
 
     public function deleteassignation(Request $request, int $pat, int $med){
         $assignation = DB::table('patient_assignations')->where('user_id', $pat)->where('id_user_med', $med);
@@ -119,7 +118,7 @@ class UserController extends Controller
     }
 
     public function addassignation(Request $request, int $pat, int $med){
-        $assignation = new Assignation();
+        $assignation = new PatientAssignation();
         $assignation->user_id = $pat;
         $assignation->id_user_med = $med;
         $assignation->save();
@@ -161,30 +160,14 @@ class UserController extends Controller
           return redirect('/'); 
 
     }
- 
-
-    public function addDoctor(Request $request) {
-        $rules = array (
-                'name' => 'required'
-        );
-        $validator = Validator::make ( User::all (), $rules );
-        if ($validator->fails ())
-            return Response::json ( array (
-                        
-                    'errors' => $validator->getMessageBag ()->toArray ()
-            ) );
-            else {
-                $data = new Data ();
-                $data->name = $request->name;
-                $data->save ();
-                return response ()->json ( $data );
-            }
-    }
 
     public function getPersonal(Request $request, int $department){
         $personalData['data'] =  DB::table('users')->where('department', $department)->get();
-        echo json_encode($personalData);
-        exit;
+        //echo json_encode($personalData);
+        //exit;
+        //$return_array = compact('personalData', 'user');
+        //return json_encode($return_array);
+        return json_encode($personalData);
     }
 
 

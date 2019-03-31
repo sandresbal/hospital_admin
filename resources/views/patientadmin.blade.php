@@ -28,8 +28,6 @@
                     {{$user->email}}
                 </td>
                 <td>
-                </td>
-                <td>
 
                     <form action="/patientassignationedit/{{$user->id}}">
                         <button type="submit" name="edit" class="btn btn-primary">Edit current doctors</button>
