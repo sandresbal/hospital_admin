@@ -11,7 +11,6 @@
     <div class="form-group">
         <label for="name">Name</label>
         <input name="name" class="form-control" placeholder="Name here" required="true">
-        <label for="name">Email</label>
         <label for="director">Select director</label>
         <select id='director' name='director'>
             @foreach($directors['data'] as $user)
