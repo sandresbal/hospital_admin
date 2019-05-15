@@ -25,7 +25,7 @@
                                     {{$patient->email}}
                                 </td>
                                 <td>
-                                    <form action="/user/{{$user->id}}/historial/">
+                                    <form action="/user/{{$patient->id}}/historial/">
                                         <button type="submit" name="edit" class="btn btn-primary">Edit historial</button>          
                                         {{ csrf_field() }}
                                     </form>

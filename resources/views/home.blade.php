@@ -12,13 +12,13 @@
                             {{ session('status') }}
                             <h6>Welcome!</h6>
                         </div>
-                        You are logged in!<br>
+                        <!--You are logged in!<br>
                         @if(!empty(Session::has('roles_logged')))
                             <div class="alert alert-danger">
                                 Estos son los roles
                                 {{ Session::get('roles_logged')}}
                             </div>
-                        @endif
+                        @endif-->
                     @if (Session::get('roles_logged') != null)
                         @foreach(Session::get('roles_logged') as $role)
                         @switch($role->rol)

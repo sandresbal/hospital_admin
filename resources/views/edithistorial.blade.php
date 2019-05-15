@@ -4,6 +4,10 @@
 <div class="container">
     @if (Auth::check())
     <h1> {{$user->name}}'s historial</h1>
+    @if ($user->historial == 'null')
+    <p>This user does not have a historial. Contact an administrator</p>
+    @else 
+    <p> Historial num {{$user->historial}}</p>
     <table class="table">
         <tbody>@foreach($lines as $line)
             <tr>
@@ -22,6 +26,7 @@
 
         {{ csrf_field() }}
     </form>
+    @endif
     @else
     <h3>You need to log in. <a href="/login">Click here to login</a></h3>
     @endif
