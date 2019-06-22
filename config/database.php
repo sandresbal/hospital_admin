@@ -66,7 +66,7 @@ return [
             'port' => '3306',
             'database' => 'trabajodaw',
             'username' => 'sandresbalsera',
-            'password' => 'AtynVFKpD2z44xp',
+            'password' => 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
             'prefix' => '',
