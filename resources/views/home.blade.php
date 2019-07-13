@@ -32,7 +32,7 @@
                             @break
                             @case('doctor')
                                 <div id="separator" style="margin-bottom:15px">
-                                <p>As doctor you have this options available:</p>
+                                <p>As a doctor you have this options available:</p>
                                 <a href="/historialadmin">Manage historials</a>   <br>        
                                 <a href="/appointmentadmin/">See my calendar</a>  <br>
                                 <a href="/editappointment/">Edit my appointments</a>  <br>
@@ -43,6 +43,7 @@
                                 <p>As a patient you have this options available:</p>
                                 <a href="/myhistorial">See my historial</a><br>
                                 <a href="/myappointments/">See my appointments</a>  <br>
+                                If you want to change an appointment, please call to the hospital
                                 </div>
                             @break
                            @default

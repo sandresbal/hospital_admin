@@ -19,13 +19,28 @@
     </table>
     
     <form action="/line/historial/{{$id_historial}}">
-    <textarea rows="5" cols="100" name="linedata">
-                        Enter a new line here...
+    <textarea rows="5" cols="100" name="linedata" id="data" placeholder="Enter a new line here..." onblur="check()">
     </textarea><br>
-        <button type="submit" name="create" formmethod="POST" class="btn btn-danger">Add new line</button>
+        <button id="b" type="submit" name="create" formmethod="POST" class="btn btn-danger" onclick="check()">Add new line</button>
 
         {{ csrf_field() }}
     </form>
+    <script>
+    window.onload=init;
+
+    function init() {
+        document.getElementById("b").disabled = true;
+        console.log("init");
+    }
+
+    function check(){
+        var field = document.getElementById("data").value;
+        if (field.length > 0){
+            document.getElementById("b").disabled = false;
+            console.log("no empty");
+        }
+    }
+    </script>
     @endif
     @else
     <h3>You need to log in. <a href="/login">Click here to login</a></h3>
